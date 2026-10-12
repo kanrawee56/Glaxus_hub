@@ -86,16 +86,19 @@ local function getPUSL()
         return pusl
     end
     local ok, src = pcall(function() return game:HttpGet(PUSL_LIB_URL) end)
+    print("[Glaxus] lib fetch:", ok, type(src), src and #src or 0)
     if not ok or type(src) ~= "string" or #src < 100 then
         return nil
     end
     local ok2, lib = pcall(function() return loadstring(src)() end)
+    print("[Glaxus] lib init:", ok2, type(lib))
     if not ok2 or type(lib) ~= "table" or type(lib.configure) ~= "function" then
         return nil
     end
     local ok3 = pcall(function()
         lib.configure({ serviceId = pandaService(), debug = false, kickOnDetect = false })
     end)
+    print("[Glaxus] configure:", ok3)
     if not ok3 then
         return nil
     end
@@ -120,6 +123,7 @@ local function pandaValidate(input)
     local final = "error"
     for attempt = 1, 4 do
         local ok, res = pcall(function() return api.validate(input) end)
+        print("[Glaxus] validate try", attempt, ok, type(res), res and res.success, res and (res.reason or res.error))
         if ok and type(res) == "table" then
             if res.success then
                 return "valid"
@@ -530,7 +534,7 @@ mk("TextLabel", {
     TextSize = 11,
     TextXAlignment = Enum.TextXAlignment.Left,
     TextColor3 = C.faint,
-    Text = "v3.1 PANDA  •  PlaceId " .. tostring(CURRENT_PLACE),
+    Text = "v3.2 DEBUG  •  PlaceId " .. tostring(CURRENT_PLACE),
 }, loadCard)
 
 local TIPS = {
