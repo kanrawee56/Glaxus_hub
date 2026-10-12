@@ -939,6 +939,7 @@ local function tryUnlock()
         return
     end
     local input = trim(passBox.Text)
+    input = input:gsub("[\"']", ""):gsub("[\226\128\139\226\128\140\239\187\191]", "") -- ตัด quote + อักขระล่องหนจาก copy-paste
     passInfo.TextColor3 = C.dim
     passInfo.Text = "Verifying key..."
     local ok, info = verifyKey(input)
