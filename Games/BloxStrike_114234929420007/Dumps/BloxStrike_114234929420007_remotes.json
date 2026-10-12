@@ -1,0 +1,1130 @@
+[
+  {
+    "parent": "MovementV2Remotes",
+    "class": "UnreliableRemoteEvent",
+    "name": "OwnerSnapshot",
+    "path": "game.ReplicatedStorage.MovementV2Remotes.OwnerSnapshot"
+  },
+  {
+    "parent": "MovementV2Remotes",
+    "class": "UnreliableRemoteEvent",
+    "name": "RemoteSnapshot",
+    "path": "game.ReplicatedStorage.MovementV2Remotes.RemoteSnapshot"
+  },
+  {
+    "parent": "MovementV2Remotes",
+    "class": "RemoteEvent",
+    "name": "Trace",
+    "path": "game.ReplicatedStorage.MovementV2Remotes.Trace"
+  },
+  {
+    "parent": "MovementV2Remotes",
+    "class": "RemoteEvent",
+    "name": "Diagnostics",
+    "path": "game.ReplicatedStorage.MovementV2Remotes.Diagnostics"
+  },
+  {
+    "parent": "MovementV2Remotes",
+    "class": "RemoteEvent",
+    "name": "Control",
+    "path": "game.ReplicatedStorage.MovementV2Remotes.Control"
+  },
+  {
+    "parent": "MovementV2Remotes",
+    "class": "UnreliableRemoteEvent",
+    "name": "Commands",
+    "path": "game.ReplicatedStorage.MovementV2Remotes.Commands"
+  },
+  {
+    "parent": "Dashboard",
+    "class": "RemoteEvent",
+    "name": "RedeemCode",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Dashboard.RedeemCode"
+  },
+  {
+    "parent": "Dashboard",
+    "class": "RemoteEvent",
+    "name": "MissionCompleted",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Dashboard.MissionCompleted"
+  },
+  {
+    "parent": "Dashboard",
+    "class": "RemoteEvent",
+    "name": "ClaimStarReward",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Dashboard.ClaimStarReward"
+  },
+  {
+    "parent": "Dashboard",
+    "class": "RemoteEvent",
+    "name": "RedeemPromotionalReward",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Dashboard.RedeemPromotionalReward"
+  },
+  {
+    "parent": "Map",
+    "class": "RemoteEvent",
+    "name": "UpdateMapVote",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Map.UpdateMapVote"
+  },
+  {
+    "parent": "Map",
+    "class": "RemoteEvent",
+    "name": "SubmitMapVote",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Map.SubmitMapVote"
+  },
+  {
+    "parent": "Map",
+    "class": "RemoteEvent",
+    "name": "StartMapVote",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Map.StartMapVote"
+  },
+  {
+    "parent": "Map",
+    "class": "RemoteEvent",
+    "name": "RequestMapVote",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Map.RequestMapVote"
+  },
+  {
+    "parent": "Map",
+    "class": "RemoteEvent",
+    "name": "EndMapVote",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Map.EndMapVote"
+  },
+  {
+    "parent": "Match",
+    "class": "RemoteEvent",
+    "name": "EndScreen",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Match.EndScreen"
+  },
+  {
+    "parent": "PlayerData",
+    "class": "RemoteEvent",
+    "name": "SubmitPin",
+    "path": "game.ReplicatedStorage.NetworkRemotes.PlayerData.SubmitPin"
+  },
+  {
+    "parent": "PlayerData",
+    "class": "RemoteEvent",
+    "name": "RetrieveAllPlayerData",
+    "path": "game.ReplicatedStorage.NetworkRemotes.PlayerData.RetrieveAllPlayerData"
+  },
+  {
+    "parent": "PlayerData",
+    "class": "RemoteEvent",
+    "name": "PinResult",
+    "path": "game.ReplicatedStorage.NetworkRemotes.PlayerData.PinResult"
+  },
+  {
+    "parent": "PlayerData",
+    "class": "RemoteEvent",
+    "name": "PlayerDataChanged",
+    "path": "game.ReplicatedStorage.NetworkRemotes.PlayerData.PlayerDataChanged"
+  },
+  {
+    "parent": "PlayerData",
+    "class": "RemoteEvent",
+    "name": "PlayerDataEvent",
+    "path": "game.ReplicatedStorage.NetworkRemotes.PlayerData.PlayerDataEvent"
+  },
+  {
+    "parent": "ModerationPanel",
+    "class": "RemoteEvent",
+    "name": "GetPlayer",
+    "path": "game.ReplicatedStorage.NetworkRemotes.ModerationPanel.GetPlayer"
+  },
+  {
+    "parent": "ModerationPanel",
+    "class": "RemoteEvent",
+    "name": "DataResponse",
+    "path": "game.ReplicatedStorage.NetworkRemotes.ModerationPanel.DataResponse"
+  },
+  {
+    "parent": "ModerationPanel",
+    "class": "RemoteEvent",
+    "name": "BanPlayer",
+    "path": "game.ReplicatedStorage.NetworkRemotes.ModerationPanel.BanPlayer"
+  },
+  {
+    "parent": "ModerationPanel",
+    "class": "RemoteEvent",
+    "name": "UnbanPlayer",
+    "path": "game.ReplicatedStorage.NetworkRemotes.ModerationPanel.UnbanPlayer"
+  },
+  {
+    "parent": "Career",
+    "class": "RemoteEvent",
+    "name": "RequestMatchDetails",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Career.RequestMatchDetails"
+  },
+  {
+    "parent": "Career",
+    "class": "RemoteEvent",
+    "name": "RequestStatistics",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Career.RequestStatistics"
+  },
+  {
+    "parent": "Career",
+    "class": "RemoteEvent",
+    "name": "Statistics",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Career.Statistics"
+  },
+  {
+    "parent": "Career",
+    "class": "RemoteEvent",
+    "name": "MatchDetails",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Career.MatchDetails"
+  },
+  {
+    "parent": "ServerBrowser",
+    "class": "RemoteEvent",
+    "name": "Teleport",
+    "path": "game.ReplicatedStorage.NetworkRemotes.ServerBrowser.Teleport"
+  },
+  {
+    "parent": "Hints",
+    "class": "RemoteEvent",
+    "name": "BombSiteExited",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Hints.BombSiteExited"
+  },
+  {
+    "parent": "Hints",
+    "class": "RemoteEvent",
+    "name": "ClearHint",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Hints.ClearHint"
+  },
+  {
+    "parent": "Hints",
+    "class": "RemoteEvent",
+    "name": "BombSiteEntered",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Hints.BombSiteEntered"
+  },
+  {
+    "parent": "VIP",
+    "class": "RemoteEvent",
+    "name": "ExecuteAction",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VIP.ExecuteAction"
+  },
+  {
+    "parent": "VIP",
+    "class": "RemoteEvent",
+    "name": "SyncState",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VIP.SyncState"
+  },
+  {
+    "parent": "VIP",
+    "class": "RemoteEvent",
+    "name": "SetSetting",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VIP.SetSetting"
+  },
+  {
+    "parent": "VIP",
+    "class": "RemoteEvent",
+    "name": "RequestData",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VIP.RequestData"
+  },
+  {
+    "parent": "VIP",
+    "class": "RemoteEvent",
+    "name": "DataResponse",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VIP.DataResponse"
+  },
+  {
+    "parent": "Character",
+    "class": "RemoteEvent",
+    "name": "CharacterDied",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Character.CharacterDied"
+  },
+  {
+    "parent": "Character",
+    "class": "RemoteEvent",
+    "name": "ShotSlow",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Character.ShotSlow"
+  },
+  {
+    "parent": "Character",
+    "class": "RemoteEvent",
+    "name": "Action",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Character.Action"
+  },
+  {
+    "parent": "Character",
+    "class": "RemoteEvent",
+    "name": "CharacterDamaged",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Character.CharacterDamaged"
+  },
+  {
+    "parent": "Sound",
+    "class": "RemoteEvent",
+    "name": "StopSoundAtPosition",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Sound.StopSoundAtPosition"
+  },
+  {
+    "parent": "Sound",
+    "class": "RemoteEvent",
+    "name": "ReplicateSound",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Sound.ReplicateSound"
+  },
+  {
+    "parent": "VoteKick",
+    "class": "RemoteEvent",
+    "name": "CallVote",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VoteKick.CallVote"
+  },
+  {
+    "parent": "VoteKick",
+    "class": "RemoteEvent",
+    "name": "VoteNoUpdate",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VoteKick.VoteNoUpdate"
+  },
+  {
+    "parent": "VoteKick",
+    "class": "RemoteEvent",
+    "name": "VoteYesUpdate",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VoteKick.VoteYesUpdate"
+  },
+  {
+    "parent": "VoteKick",
+    "class": "RemoteEvent",
+    "name": "VoteYes",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VoteKick.VoteYes"
+  },
+  {
+    "parent": "VoteKick",
+    "class": "RemoteEvent",
+    "name": "EndVote",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VoteKick.EndVote"
+  },
+  {
+    "parent": "VoteKick",
+    "class": "RemoteEvent",
+    "name": "StartVote",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VoteKick.StartVote"
+  },
+  {
+    "parent": "VoteKick",
+    "class": "RemoteEvent",
+    "name": "VoteNo",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VoteKick.VoteNo"
+  },
+  {
+    "parent": "BreakableDoor",
+    "class": "RemoteEvent",
+    "name": "Resolved",
+    "path": "game.ReplicatedStorage.NetworkRemotes.BreakableDoor.Resolved"
+  },
+  {
+    "parent": "BreakableDoor",
+    "class": "RemoteEvent",
+    "name": "Use",
+    "path": "game.ReplicatedStorage.NetworkRemotes.BreakableDoor.Use"
+  },
+  {
+    "parent": "Spectate",
+    "class": "RemoteEvent",
+    "name": "SpectatePlayer",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Spectate.SpectatePlayer"
+  },
+  {
+    "parent": "Spectate",
+    "class": "UnreliableRemoteEvent",
+    "name": "UpdateCameraCFrame",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Spectate.UpdateCameraCFrame"
+  },
+  {
+    "parent": "Spectate",
+    "class": "RemoteEvent",
+    "name": "StartSpectating",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Spectate.StartSpectating"
+  },
+  {
+    "parent": "Spectate",
+    "class": "RemoteEvent",
+    "name": "SetSpectatePerspective",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Spectate.SetSpectatePerspective"
+  },
+  {
+    "parent": "Spectate",
+    "class": "RemoteEvent",
+    "name": "StopSpectating",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Spectate.StopSpectating"
+  },
+  {
+    "parent": "Chat",
+    "class": "RemoteEvent",
+    "name": "ChatTradeUp",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Chat.ChatTradeUp"
+  },
+  {
+    "parent": "Chat",
+    "class": "RemoteEvent",
+    "name": "ChatPlayerKilled",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Chat.ChatPlayerKilled"
+  },
+  {
+    "parent": "Chat",
+    "class": "RemoteEvent",
+    "name": "ServerTeamChat",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Chat.ServerTeamChat"
+  },
+  {
+    "parent": "Chat",
+    "class": "RemoteEvent",
+    "name": "ClientChat",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Chat.ClientChat"
+  },
+  {
+    "parent": "Chat",
+    "class": "RemoteEvent",
+    "name": "ServerChat",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Chat.ServerChat"
+  },
+  {
+    "parent": "Chat",
+    "class": "RemoteEvent",
+    "name": "ChatTeamJoin",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Chat.ChatTeamJoin"
+  },
+  {
+    "parent": "Chat",
+    "class": "RemoteEvent",
+    "name": "ChatGrenadeThrow",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Chat.ChatGrenadeThrow"
+  },
+  {
+    "parent": "Chat",
+    "class": "RemoteEvent",
+    "name": "ChatPlayerBanned",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Chat.ChatPlayerBanned"
+  },
+  {
+    "parent": "Chat",
+    "class": "RemoteEvent",
+    "name": "ChatPlayerLeave",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Chat.ChatPlayerLeave"
+  },
+  {
+    "parent": "Chat",
+    "class": "RemoteEvent",
+    "name": "ChatDefuseStart",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Chat.ChatDefuseStart"
+  },
+  {
+    "parent": "Chat",
+    "class": "RemoteEvent",
+    "name": "ChatSystemMessage",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Chat.ChatSystemMessage"
+  },
+  {
+    "parent": "Chat",
+    "class": "RemoteEvent",
+    "name": "ChatCaseOpened",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Chat.ChatCaseOpened"
+  },
+  {
+    "parent": "Chat",
+    "class": "RemoteEvent",
+    "name": "ChatTeamDamage",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Chat.ChatTeamDamage"
+  },
+  {
+    "parent": "Chat",
+    "class": "RemoteEvent",
+    "name": "ChatMoneyReward",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Chat.ChatMoneyReward"
+  },
+  {
+    "parent": "Melee",
+    "class": "RemoteEvent",
+    "name": "MeleeAttack",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Melee.MeleeAttack"
+  },
+  {
+    "parent": "VFX",
+    "class": "RemoteEvent",
+    "name": "CreateMarker",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VFX.CreateMarker"
+  },
+  {
+    "parent": "VFX",
+    "class": "RemoteEvent",
+    "name": "ReplicateFinisher",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VFX.ReplicateFinisher"
+  },
+  {
+    "parent": "VFX",
+    "class": "RemoteEvent",
+    "name": "CreateBloodSplatter",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VFX.CreateBloodSplatter"
+  },
+  {
+    "parent": "VFX",
+    "class": "RemoteEvent",
+    "name": "BreakGlass",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VFX.BreakGlass"
+  },
+  {
+    "parent": "VFX",
+    "class": "RemoteEvent",
+    "name": "DestroyVoxelFire",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VFX.DestroyVoxelFire"
+  },
+  {
+    "parent": "VFX",
+    "class": "RemoteEvent",
+    "name": "FlashPlayer",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VFX.FlashPlayer"
+  },
+  {
+    "parent": "VFX",
+    "class": "RemoteEvent",
+    "name": "UpdateVoxelFire",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VFX.UpdateVoxelFire"
+  },
+  {
+    "parent": "VFX",
+    "class": "RemoteEvent",
+    "name": "CreateTracer",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VFX.CreateTracer"
+  },
+  {
+    "parent": "VFX",
+    "class": "RemoteEvent",
+    "name": "CreateVoxelSmoke",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VFX.CreateVoxelSmoke"
+  },
+  {
+    "parent": "VFX",
+    "class": "RemoteEvent",
+    "name": "CleanupDebris",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VFX.CleanupDebris"
+  },
+  {
+    "parent": "VFX",
+    "class": "RemoteEvent",
+    "name": "CreateImpact",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VFX.CreateImpact"
+  },
+  {
+    "parent": "VFX",
+    "class": "RemoteEvent",
+    "name": "CreateVoxelFire",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VFX.CreateVoxelFire"
+  },
+  {
+    "parent": "VFX",
+    "class": "RemoteEvent",
+    "name": "CreateCharacterMuzzleFlash",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VFX.CreateCharacterMuzzleFlash"
+  },
+  {
+    "parent": "VFX",
+    "class": "RemoteEvent",
+    "name": "DestroyVoxelSmoke",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VFX.DestroyVoxelSmoke"
+  },
+  {
+    "parent": "VFX",
+    "class": "RemoteEvent",
+    "name": "DisruptVoxelSmoke",
+    "path": "game.ReplicatedStorage.NetworkRemotes.VFX.DisruptVoxelSmoke"
+  },
+  {
+    "parent": "Modes",
+    "class": "RemoteEvent",
+    "name": "FetchPlayerCounts",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Modes.FetchPlayerCounts"
+  },
+  {
+    "parent": "Modes",
+    "class": "RemoteEvent",
+    "name": "SelectGamemode",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Modes.SelectGamemode"
+  },
+  {
+    "parent": "Modes",
+    "class": "RemoteEvent",
+    "name": "FetchServers",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Modes.FetchServers"
+  },
+  {
+    "parent": "Modes",
+    "class": "RemoteEvent",
+    "name": "SendPlayerCounts",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Modes.SendPlayerCounts"
+  },
+  {
+    "parent": "TeamSelection",
+    "class": "RemoteEvent",
+    "name": "SelectTeam",
+    "path": "game.ReplicatedStorage.NetworkRemotes.TeamSelection.SelectTeam"
+  },
+  {
+    "parent": "Ping",
+    "class": "RemoteEvent",
+    "name": "CreatePlayerPositionPing",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Ping.CreatePlayerPositionPing"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "LoadoutResponse",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.LoadoutResponse"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "NewInventoryItem",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.NewInventoryItem"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "CreateMagazine",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.CreateMagazine"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "EquipSpecialItem",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.EquipSpecialItem"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "ReturnBuyMenuPurchase",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.ReturnBuyMenuPurchase"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "WeaponEquipResolved",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.WeaponEquipResolved"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "SpectatedPlayerInventory",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.SpectatedPlayerInventory"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "EquipLoadoutSkin",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.EquipLoadoutSkin"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "RequestSpectatedPlayerInventory",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.RequestSpectatedPlayerInventory"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "RefillAmmo",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.RefillAmmo"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "UpdateStatTrack",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.UpdateStatTrack"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "ShootWeapon",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.ShootWeapon"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "RemoveInventoryItem",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.RemoveInventoryItem"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "CreateGameLoadout",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.CreateGameLoadout"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "UpdateScopeIncrement",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.UpdateScopeIncrement"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "UpdateWeaponSuppressor",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.UpdateWeaponSuppressor"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "ReloadWeapon",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.ReloadWeapon"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "ThrowGrenade",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.ThrowGrenade"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "UpdateWeaponCharm",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.UpdateWeaponCharm"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "DropWeapon",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.DropWeapon"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "SwapLoadoutSkins",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.SwapLoadoutSkins"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "RemoveWeaponCharm",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.RemoveWeaponCharm"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "CleanupGameLoadout",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.CleanupGameLoadout"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "PickupWeapon",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.PickupWeapon"
+  },
+  {
+    "parent": "Inventory",
+    "class": "RemoteEvent",
+    "name": "BuyMenuPurchase",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Inventory.BuyMenuPurchase"
+  },
+  {
+    "parent": "Projectile",
+    "class": "RemoteEvent",
+    "name": "Resolve",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Projectile.Resolve"
+  },
+  {
+    "parent": "Projectile",
+    "class": "RemoteEvent",
+    "name": "Bounce",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Projectile.Bounce"
+  },
+  {
+    "parent": "Projectile",
+    "class": "RemoteEvent",
+    "name": "Spawn",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Projectile.Spawn"
+  },
+  {
+    "parent": "Collaborations",
+    "class": "RemoteEvent",
+    "name": "MedalAutoClip",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Collaborations.MedalAutoClip"
+  },
+  {
+    "parent": "Collaborations",
+    "class": "RemoteEvent",
+    "name": "ClaimExclusiveMedalReward",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Collaborations.ClaimExclusiveMedalReward"
+  },
+  {
+    "parent": "Collaborations",
+    "class": "RemoteEvent",
+    "name": "RefreshMedalStatus",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Collaborations.RefreshMedalStatus"
+  },
+  {
+    "parent": "Player",
+    "class": "RemoteEvent",
+    "name": "SubmitPlayerReport",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Player.SubmitPlayerReport"
+  },
+  {
+    "parent": "Player",
+    "class": "RemoteEvent",
+    "name": "PressedPlay",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Player.PressedPlay"
+  },
+  {
+    "parent": "Player",
+    "class": "RemoteEvent",
+    "name": "SubmitUserPlatformAnalytics",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Player.SubmitUserPlatformAnalytics"
+  },
+  {
+    "parent": "Player",
+    "class": "RemoteEvent",
+    "name": "AFKTeleport",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Player.AFKTeleport"
+  },
+  {
+    "parent": "Player",
+    "class": "RemoteEvent",
+    "name": "UpdatePlayerSettings",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Player.UpdatePlayerSettings"
+  },
+  {
+    "parent": "Player",
+    "class": "RemoteEvent",
+    "name": "BlankRequest",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Player.BlankRequest"
+  },
+  {
+    "parent": "Player",
+    "class": "RemoteEvent",
+    "name": "UpdateMobileButtons",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Player.UpdateMobileButtons"
+  },
+  {
+    "parent": "Player",
+    "class": "RemoteEvent",
+    "name": "ReportPlayerConnect",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Player.ReportPlayerConnect"
+  },
+  {
+    "parent": "UI",
+    "class": "RemoteEvent",
+    "name": "CreateMenuNotification",
+    "path": "game.ReplicatedStorage.NetworkRemotes.UI.CreateMenuNotification"
+  },
+  {
+    "parent": "UI",
+    "class": "RemoteEvent",
+    "name": "RoundMVP",
+    "path": "game.ReplicatedStorage.NetworkRemotes.UI.RoundMVP"
+  },
+  {
+    "parent": "UI",
+    "class": "RemoteEvent",
+    "name": "EquipCreatorCode",
+    "path": "game.ReplicatedStorage.NetworkRemotes.UI.EquipCreatorCode"
+  },
+  {
+    "parent": "UI",
+    "class": "RemoteEvent",
+    "name": "TeammateGrenades",
+    "path": "game.ReplicatedStorage.NetworkRemotes.UI.TeammateGrenades"
+  },
+  {
+    "parent": "UI",
+    "class": "RemoteEvent",
+    "name": "ShowNotification",
+    "path": "game.ReplicatedStorage.NetworkRemotes.UI.ShowNotification"
+  },
+  {
+    "parent": "UI",
+    "class": "RemoteEvent",
+    "name": "CreateDamageIndicator",
+    "path": "game.ReplicatedStorage.NetworkRemotes.UI.CreateDamageIndicator"
+  },
+  {
+    "parent": "UI",
+    "class": "RemoteEvent",
+    "name": "UIPlayerKilled",
+    "path": "game.ReplicatedStorage.NetworkRemotes.UI.UIPlayerKilled"
+  },
+  {
+    "parent": "UI",
+    "class": "RemoteEvent",
+    "name": "ShowDeathCard",
+    "path": "game.ReplicatedStorage.NetworkRemotes.UI.ShowDeathCard"
+  },
+  {
+    "parent": "UI",
+    "class": "RemoteEvent",
+    "name": "RoundDamageMatrix",
+    "path": "game.ReplicatedStorage.NetworkRemotes.UI.RoundDamageMatrix"
+  },
+  {
+    "parent": "UI",
+    "class": "RemoteEvent",
+    "name": "RoundWinner",
+    "path": "game.ReplicatedStorage.NetworkRemotes.UI.RoundWinner"
+  },
+  {
+    "parent": "UI",
+    "class": "RemoteEvent",
+    "name": "UpdateCreatorCode",
+    "path": "game.ReplicatedStorage.NetworkRemotes.UI.UpdateCreatorCode"
+  },
+  {
+    "parent": "Store",
+    "class": "RemoteEvent",
+    "name": "CreateGift",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Store.CreateGift"
+  },
+  {
+    "parent": "Store",
+    "class": "RemoteEvent",
+    "name": "CaseOpened",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Store.CaseOpened"
+  },
+  {
+    "parent": "Store",
+    "class": "RemoteEvent",
+    "name": "PurchaseCase",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Store.PurchaseCase"
+  },
+  {
+    "parent": "Store",
+    "class": "RemoteEvent",
+    "name": "TradeUpDenied",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Store.TradeUpDenied"
+  },
+  {
+    "parent": "Store",
+    "class": "RemoteEvent",
+    "name": "TradeUpItems",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Store.TradeUpItems"
+  },
+  {
+    "parent": "Store",
+    "class": "RemoteEvent",
+    "name": "TradeUpCompleted",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Store.TradeUpCompleted"
+  },
+  {
+    "parent": "Store",
+    "class": "RemoteEvent",
+    "name": "ConsoleOpened",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Store.ConsoleOpened"
+  },
+  {
+    "parent": "Store",
+    "class": "RemoteEvent",
+    "name": "PurchaseTradeTokensCase",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Store.PurchaseTradeTokensCase"
+  },
+  {
+    "parent": "Store",
+    "class": "RemoteEvent",
+    "name": "NewInventoryItem",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Store.NewInventoryItem"
+  },
+  {
+    "parent": "Store",
+    "class": "RemoteEvent",
+    "name": "PurchaseConsoleTradeTokens",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Store.PurchaseConsoleTradeTokens"
+  },
+  {
+    "parent": "Store",
+    "class": "RemoteEvent",
+    "name": "OpenedShop",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Store.OpenedShop"
+  },
+  {
+    "parent": "Store",
+    "class": "RemoteEvent",
+    "name": "GiftCase",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Store.GiftCase"
+  },
+  {
+    "parent": "Store",
+    "class": "RemoteEvent",
+    "name": "OpenConsole",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Store.OpenConsole"
+  },
+  {
+    "parent": "Store",
+    "class": "RemoteEvent",
+    "name": "PurchaseTradeTokensProduct",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Store.PurchaseTradeTokensProduct"
+  },
+  {
+    "parent": "Store",
+    "class": "RemoteEvent",
+    "name": "CaseOpenSequenceFinished",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Store.CaseOpenSequenceFinished"
+  },
+  {
+    "parent": "Store",
+    "class": "RemoteEvent",
+    "name": "OpenCase",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Store.OpenCase"
+  },
+  {
+    "parent": "Store",
+    "class": "RemoteEvent",
+    "name": "CaseOpenDenied",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Store.CaseOpenDenied"
+  },
+  {
+    "parent": "Hostage",
+    "class": "RemoteEvent",
+    "name": "CancelRescue",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Hostage.CancelRescue"
+  },
+  {
+    "parent": "Hostage",
+    "class": "RemoteEvent",
+    "name": "PickedUp",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Hostage.PickedUp"
+  },
+  {
+    "parent": "Hostage",
+    "class": "RemoteEvent",
+    "name": "StartRescue",
+    "path": "game.ReplicatedStorage.NetworkRemotes.Hostage.StartRescue"
+  },
+  {
+    "parent": "C4",
+    "class": "RemoteEvent",
+    "name": "CancelDefuse",
+    "path": "game.ReplicatedStorage.NetworkRemotes.C4.CancelDefuse"
+  },
+  {
+    "parent": "C4",
+    "class": "RemoteEvent",
+    "name": "Defused",
+    "path": "game.ReplicatedStorage.NetworkRemotes.C4.Defused"
+  },
+  {
+    "parent": "C4",
+    "class": "RemoteEvent",
+    "name": "StartDefuse",
+    "path": "game.ReplicatedStorage.NetworkRemotes.C4.StartDefuse"
+  },
+  {
+    "parent": "C4",
+    "class": "RemoteEvent",
+    "name": "Start",
+    "path": "game.ReplicatedStorage.NetworkRemotes.C4.Start"
+  },
+  {
+    "parent": "C4",
+    "class": "RemoteEvent",
+    "name": "ForceCancel",
+    "path": "game.ReplicatedStorage.NetworkRemotes.C4.ForceCancel"
+  },
+  {
+    "parent": "C4",
+    "class": "RemoteEvent",
+    "name": "Cancel",
+    "path": "game.ReplicatedStorage.NetworkRemotes.C4.Cancel"
+  },
+  {
+    "parent": "C4",
+    "class": "RemoteEvent",
+    "name": "Planted",
+    "path": "game.ReplicatedStorage.NetworkRemotes.C4.Planted"
+  },
+  {
+    "parent": "GlobalMarketplace",
+    "class": "RemoteEvent",
+    "name": "PurchasedItem",
+    "path": "game.ReplicatedStorage.NetworkRemotes.GlobalMarketplace.PurchasedItem"
+  },
+  {
+    "parent": "GlobalMarketplace",
+    "class": "RemoteEvent",
+    "name": "SearchMarket",
+    "path": "game.ReplicatedStorage.NetworkRemotes.GlobalMarketplace.SearchMarket"
+  },
+  {
+    "parent": "GlobalMarketplace",
+    "class": "RemoteEvent",
+    "name": "NewItem",
+    "path": "game.ReplicatedStorage.NetworkRemotes.GlobalMarketplace.NewItem"
+  },
+  {
+    "parent": "GlobalMarketplace",
+    "class": "RemoteEvent",
+    "name": "ListItem",
+    "path": "game.ReplicatedStorage.NetworkRemotes.GlobalMarketplace.ListItem"
+  },
+  {
+    "parent": "GlobalMarketplace",
+    "class": "RemoteEvent",
+    "name": "ClearListing",
+    "path": "game.ReplicatedStorage.NetworkRemotes.GlobalMarketplace.ClearListing"
+  },
+  {
+    "parent": "GlobalMarketplace",
+    "class": "RemoteEvent",
+    "name": "ProfileInfo",
+    "path": "game.ReplicatedStorage.NetworkRemotes.GlobalMarketplace.ProfileInfo"
+  },
+  {
+    "parent": "GlobalMarketplace",
+    "class": "RemoteEvent",
+    "name": "FetchedRAP",
+    "path": "game.ReplicatedStorage.NetworkRemotes.GlobalMarketplace.FetchedRAP"
+  },
+  {
+    "parent": "GlobalMarketplace",
+    "class": "RemoteEvent",
+    "name": "EndLoad",
+    "path": "game.ReplicatedStorage.NetworkRemotes.GlobalMarketplace.EndLoad"
+  },
+  {
+    "parent": "GlobalMarketplace",
+    "class": "RemoteEvent",
+    "name": "ListItemResult",
+    "path": "game.ReplicatedStorage.NetworkRemotes.GlobalMarketplace.ListItemResult"
+  },
+  {
+    "parent": "GlobalMarketplace",
+    "class": "RemoteEvent",
+    "name": "PurchaseItem",
+    "path": "game.ReplicatedStorage.NetworkRemotes.GlobalMarketplace.PurchaseItem"
+  },
+  {
+    "parent": "GlobalMarketplace",
+    "class": "RemoteEvent",
+    "name": "RequestProfileInfo",
+    "path": "game.ReplicatedStorage.NetworkRemotes.GlobalMarketplace.RequestProfileInfo"
+  },
+  {
+    "parent": "GlobalMarketplace",
+    "class": "RemoteEvent",
+    "name": "SearchMarketResults",
+    "path": "game.ReplicatedStorage.NetworkRemotes.GlobalMarketplace.SearchMarketResults"
+  },
+  {
+    "parent": "GlobalMarketplace",
+    "class": "RemoteEvent",
+    "name": "RefreshInventory",
+    "path": "game.ReplicatedStorage.NetworkRemotes.GlobalMarketplace.RefreshInventory"
+  },
+  {
+    "parent": "GlobalMarketplace",
+    "class": "RemoteEvent",
+    "name": "FetchRAP",
+    "path": "game.ReplicatedStorage.NetworkRemotes.GlobalMarketplace.FetchRAP"
+  },
+  {
+    "parent": "GlobalMarketplace",
+    "class": "RemoteEvent",
+    "name": "DelistItem",
+    "path": "game.ReplicatedStorage.NetworkRemotes.GlobalMarketplace.DelistItem"
+  },
+  {
+    "parent": "GlobalMarketplace",
+    "class": "RemoteEvent",
+    "name": "PurchaseItemResult",
+    "path": "game.ReplicatedStorage.NetworkRemotes.GlobalMarketplace.PurchaseItemResult"
+  },
+  {
+    "parent": "Remotes",
+    "class": "RemoteEvent",
+    "name": "BAC",
+    "path": "game.ReplicatedStorage.Remotes.BAC"
+  }
+]

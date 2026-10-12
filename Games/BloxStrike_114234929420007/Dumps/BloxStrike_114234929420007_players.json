@@ -1,0 +1,163 @@
+{
+  "players": [
+    {
+      "stats": [
+        
+      ],
+      "name": "Sakpotx2",
+      "position": {
+        "y": 103.01,
+        "x": 0,
+        "z": 0
+      },
+      "team": "",
+      "display_name": "Sakpotx2",
+      "user_id": 2636076677
+    },
+    {
+      "stats": [
+        
+      ],
+      "name": "gwapojimj",
+      "team": "",
+      "display_name": "ShadowStriker",
+      "user_id": 3130866705
+    },
+    {
+      "stats": [
+        
+      ],
+      "name": "YellowCatzzz",
+      "position": {
+        "y": 12.701,
+        "x": -45.449,
+        "z": -128.18
+      },
+      "team": "",
+      "display_name": "不享受生活",
+      "user_id": 10983127351
+    },
+    {
+      "stats": [
+        
+      ],
+      "name": "salmanrehan",
+      "position": {
+        "y": 12.916,
+        "x": -48.413,
+        "z": -139.797
+      },
+      "team": "",
+      "display_name": "MrAlienz",
+      "user_id": 1377366254
+    },
+    {
+      "stats": [
+        
+      ],
+      "name": "totoy_1197",
+      "position": {
+        "y": 4.972,
+        "x": 99.062,
+        "z": 84.6
+      },
+      "team": "",
+      "display_name": "xX0_0Xx",
+      "user_id": 8547171184
+    },
+    {
+      "stats": [
+        
+      ],
+      "name": "aarishshakeel677",
+      "position": {
+        "y": 11.581,
+        "x": 38.793,
+        "z": 8.66
+      },
+      "team": "",
+      "display_name": "aarishshakeel677",
+      "user_id": 10418518671
+    },
+    {
+      "stats": [
+        
+      ],
+      "name": "voroluna",
+      "position": {
+        "y": 11.609,
+        "x": 70.561,
+        "z": 16.129
+      },
+      "team": "",
+      "display_name": "Kidnapper",
+      "user_id": 9760564873
+    },
+    {
+      "stats": [
+        
+      ],
+      "name": "JIA44667",
+      "team": "",
+      "display_name": "wenjia",
+      "user_id": 4870043476
+    },
+    {
+      "stats": [
+        
+      ],
+      "name": "NavalbaseChocoPlayer",
+      "position": {
+        "y": 4.972,
+        "x": 93.582,
+        "z": 88.293
+      },
+      "team": "",
+      "display_name": "cheese",
+      "user_id": 307741414
+    }
+  ],
+  "local_player": {
+    "character": {
+      "root_part": {
+        "cframe": {
+          "look_direction": {
+            "y": -0,
+            "x": -0,
+            "z": -1
+          },
+          "position": {
+            "y": 103.01,
+            "x": 0,
+            "z": 0
+          }
+        },
+        "position": {
+          "y": 103.01,
+          "x": 0,
+          "z": 0
+        }
+      },
+      "humanoid": {
+        "max_health": 100,
+        "health": 100,
+        "walk_speed": 16
+      },
+      "tools_equipped": [
+        
+      ]
+    },
+    "name": "Sakpotx2",
+    "stats": [
+      
+    ],
+    "team": "",
+    "backpack": {
+      "tools": [
+        
+      ]
+    },
+    "display_name": "Sakpotx2",
+    "user_id": 2636076677
+  }
+}

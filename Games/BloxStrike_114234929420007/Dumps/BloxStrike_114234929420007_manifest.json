@@ -1,0 +1,17 @@
+{
+  "elapsed_seconds": 10.123,
+  "map_name": "BloxStrike",
+  "job_id": "edf6758b-ae0d-4ee3-b8d4-27c6f9245e35",
+  "counts": {
+    "models": 2604,
+    "players": 9,
+    "scripts": 1029,
+    "tools": 0,
+    "remotes": 188,
+    "folders": 312,
+    "parts": 14616
+  },
+  "timestamp": 1791300308,
+  "game_id": 7633926880,
+  "place_id": 114234929420007
+}
