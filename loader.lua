@@ -130,33 +130,113 @@ end
 -- ใส่ข้างล่าง แล้วตั้ง PANDA_ENABLED = true
 -- =====================================================================
 local PANDA_ENABLED = false -- <<<<<< true = จอรหัสตรวจคีย์กับ Panda
-local PANDA_SERVICE_ID = "" -- <<<<<< service ID จาก dashboard Panda
-local PANDA_GETKEY_URL = "" -- <<<<<< ลิงก์เอาคีย์ (หน้า getkey ของ glaxushub)
-local PANDA_LOADER = "" -- <<<<<< ถ้า Panda ให้โค้ด loader มา วางตรงนี้ (กรณีต้องใช้ snippet ของเขา)
+local PANDA_SERVICE_ID = "glaxushub" -- identifier จากแท็บ Hub Details (ของเราคือ glaxushub)
+local PANDA_GETKEY_URL = "" -- ถ้าว่างจะใช้ลิงก์ที่ Panda gen ให้อัตโนมัติ (แถม HWID ต่อท้าย)
+
+local PANDA_LIB_URL = "https://api.pandauth.com/lib/external/v3.lua"
+local PANDA_KEY_FILE = "glaxus_key.txt" -- จำคีย์ที่ผ่านแล้ว (รันรอบหน้าไม่ต้องกรอกใหม่)
+
+local pelinda = nil
+local function getPelinda()
+    if pelinda then
+        return pelinda
+    end
+    local ok, lib = pcall(function()
+        return loadstring(game:HttpGet(PANDA_LIB_URL))()
+    end)
+    if ok and type(lib) == "table" then
+        pelinda = lib
+        return pelinda
+    end
+    return nil
+end
+
+local function pandaService()
+    if PANDA_SERVICE_ID ~= "" then
+        return PANDA_SERVICE_ID
+    end
+    return "glaxushub"
+end
+
+-- ตรวจคีย์กับ Panda: "valid" / "invalid" / "error" (retry 3 รอบกันเน็ตกระตุก)
+local function pandaValidate(input)
+    local api = getPelinda()
+    if not api then
+        return "error"
+    end
+    local res = nil
+    for _ = 1, 3 do
+        local ok, r = pcall(function()
+            return api.Init({ Service = pandaService(), Key = input, SilentMode = true })
+        end)
+        if ok and type(r) == "string" then
+            res = r
+            if r ~= "error!!" then
+                break
+            end
+        end
+        task.wait(1)
+    end
+    if res == "validated!!" then
+        return "valid"
+    end
+    if res == "invalid!!" then
+        return "invalid"
+    end
+    return "error"
+end
+
+local function saveKey(input)
+    pcall(function()
+        if typeof(writefile) == "function" then
+            writefile(PANDA_KEY_FILE, input)
+        end
+    end)
+end
+
+local function loadSavedKey()
+    if typeof(isfile) == "function" and typeof(readfile) == "function" then
+        local ok, has = pcall(function() return isfile(PANDA_KEY_FILE) end)
+        if ok and has then
+            local ok2, content = pcall(function() return readfile(PANDA_KEY_FILE) end)
+            if ok2 and type(content) == "string" then
+                content = trim(content)
+                if #content > 3 then
+                    return content
+                end
+            end
+        end
+    end
+    return nil
+end
 
 local function checkPandaKey(input)
     if input == PASSWORD then
         return true, "owner"
     end
-    if PANDA_SERVICE_ID == "" and PANDA_LOADER == "" then
-        return false, "Panda not configured [2.2]"
+    local st = pandaValidate(input)
+    if st == "valid" then
+        saveKey(input) -- จำไว้ รอบหน้าเข้าเลยไม่ต้องกรอก
+        return true, "panda"
+    elseif st == "invalid" then
+        return false, "Invalid, expired, or HWID-locked key"
     end
-    -- ถ้ามี loader snippet ของ Panda ให้ใช้ทางนั้น (แม่นสุด)
-    if PANDA_LOADER ~= "" then
-        local fn, err = loadstring(PANDA_LOADER)
-        if not fn then
-            return false, "Panda loader error"
-        end
-        pcall(function() getgenv().glaxus_panda_key = input end)
-        local ok, res = pcall(fn)
-        if ok then
-            return true, "panda"
-        end
-        return false, tostring(res or err or "Key rejected")
+    return false, "Cannot reach Panda — retry"
+end
+
+-- ลิงก์เอาคีย์ (Panda แถม HWID ต่อท้ายให้อัตโนมัติ)
+local function pandaGetKeyLink()
+    if PANDA_GETKEY_URL ~= "" then
+        return PANDA_GETKEY_URL
     end
-    -- ไม่มี snippet: ส่งคีย์ผ่าน global แล้วให้ dashboard ตรวจตอนโหลดสคริปต์จริง
-    -- (โหมดนี้ไว้ก่อน — แนะนำวาง PANDA_LOADER จะชัวร์กว่า)
-    return false, "PANDA_LOADER required (see dashboard)"
+    local api = getPelinda()
+    if api then
+        local ok, link = pcall(function() return api.GetKeyLink({ Service = pandaService() }) end)
+        if ok and type(link) == "string" and #link > 8 then
+            return link
+        end
+    end
+    return ""
 end
 
 -- =====================================================================
@@ -259,8 +339,8 @@ local function verifyKey(input)
 end
 
 local function activeGetKeyUrl()
-    if PANDA_ENABLED and PANDA_GETKEY_URL ~= "" then
-        return PANDA_GETKEY_URL
+    if PANDA_ENABLED then
+        return pandaGetKeyLink()
     end
     if LUARMOR_ENABLED and LUARMOR_GETKEY_URL ~= "" then
         return LUARMOR_GETKEY_URL
@@ -1323,6 +1403,18 @@ task.spawn(function()
             Size = UDim2.new(i / n, 0, 1, 0),
         }):Play()
         task.wait(LOADING_TIME / n)
+    end
+
+    -- save-and-resume: เคยผ่านแล้ว ข้ามจอรหัสเลย
+    if PANDA_ENABLED then
+        setStatus("Checking saved key...")
+        local saved = loadSavedKey()
+        if saved and pandaValidate(saved) == "valid" then
+            unlocked = true
+            loadingFrame.Visible = false
+            onUnlocked()
+            return
+        end
     end
 
     loadingFrame.Visible = false
