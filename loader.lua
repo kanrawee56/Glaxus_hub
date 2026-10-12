@@ -129,7 +129,7 @@ end
 -- วิธีต่อ: สร้าง service เสร็จ -> เอา loader snippet / service ID ที่ Panda ให้มา
 -- ใส่ข้างล่าง แล้วตั้ง PANDA_ENABLED = true
 -- =====================================================================
-local PANDA_ENABLED = false -- <<<<<< true = จอรหัสตรวจคีย์กับ Panda
+local PANDA_ENABLED = true -- <<<<<< true = จอรหัสตรวจคีย์กับ Panda
 local PANDA_SERVICE_ID = "glaxushub" -- identifier จากแท็บ Hub Details (ของเราคือ glaxushub)
 local PANDA_GETKEY_URL = "" -- ถ้าว่างจะใช้ลิงก์ที่ Panda gen ให้อัตโนมัติ (แถม HWID ต่อท้าย)
 
