@@ -131,7 +131,7 @@ end
 -- =====================================================================
 local PANDA_ENABLED = true -- <<<<<< true = จอรหัสตรวจคีย์กับ Panda
 local PANDA_SERVICE_ID = "glaxushub" -- identifier จากแท็บ Hub Details (ของเราคือ glaxushub)
-local PANDA_GETKEY_URL = "" -- ถ้าว่างจะใช้ลิงก์ที่ Panda gen ให้อัตโนมัติ (แถม HWID ต่อท้าย)
+local PANDA_GETKEY_URL = "https://ads.pandauth.com/getkey/glaxushub" -- หน้าคีย์ตาม docs Panda (เติม ?hwid= ให้อัตโนมัติในโค้ด)
 
 local PANDA_LIB_URL = "https://api.pandauth.com/lib/external/v3.lua"
 local PANDA_KEY_FILE = "glaxus_key.txt" -- จำคีย์ที่ผ่านแล้ว (รันรอบหน้าไม่ต้องกรอกใหม่)
@@ -224,10 +224,15 @@ local function checkPandaKey(input)
     return false, "Cannot reach Panda — retry"
 end
 
--- ลิงก์เอาคีย์ (Panda แถม HWID ต่อท้ายให้อัตโนมัติ)
+-- ลิงก์เอาคีย์ (ไม่พึ่ง library — สร้างจาก format ตรงตาม docs + แถม HWID)
 local function pandaGetKeyLink()
-    if PANDA_GETKEY_URL ~= "" then
-        return PANDA_GETKEY_URL
+    local base = PANDA_GETKEY_URL
+    if base == "" then
+        base = "https://ads.pandauth.com/getkey/glaxushub"
+    end
+    local id = getHwid()
+    if id and #id > 0 then
+        return base .. "?hwid=" .. id
     end
     local api = getPelinda()
     if api then
@@ -236,7 +241,7 @@ local function pandaGetKeyLink()
             return link
         end
     end
-    return ""
+    return base
 end
 
 -- =====================================================================
