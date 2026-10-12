@@ -39,7 +39,7 @@ G.__EsaHub_Cleanup = nil
 -- =====================================================================
 -- [2] CONFIG
 -- =====================================================================
-local BASE_URL = "" -- <<<<<< ใส่ตรงนี้หลัง push ขึ้น GitHub เช่น "https://raw.githubusercontent.com/kanra/Esa-slayer/main/"
+local BASE_URL = "https://raw.githubusercontent.com/kanrawee56/Glaxus_hub/main/" -- <<<<<< ใส่ตรงนี้หลัง push ขึ้น GitHub เช่น "https://raw.githubusercontent.com/kanra/Esa-slayer/main/"
 -- ต้องลงท้ายด้วย "/" เสมอ ถ้ายังไม่ push ให้ปล่อย "" ไว้ (จะใช้โหมด readfile local อย่างเดียว)
 
 local AUTO_LOAD = true -- ถ้า PlaceId ตรงกับเกมในลิสต์ ให้โหลดทันที ไม่ต้องกด
