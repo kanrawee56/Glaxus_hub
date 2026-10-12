@@ -79,8 +79,6 @@ local PANDA_GETKEY_URL = "https://ads.pandauth.com/getkey/glaxushub" -- หน�
 local PUSL_LIB_URL = "https://secure.pandauth.com/pv4/lib" -- Panda-RBLX SDK (PUSL-V4, ตัวปัจจุบัน)
 local PANDA_KEY_FILE = "glaxus_key.txt" -- จำคีย์ที่ผ่านแล้ว (รันรอบหน้าไม่ต้องกรอกใหม่)
 
-local PUSL_LIB_URL = "https://secure.pandauth.com/pv4/lib" -- Panda-RBLX SDK (PUSL-V4, ตัวปัจจุบัน)
-
 local pusl = nil
 local puslService = nil
 local function getPUSL()
