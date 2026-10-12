@@ -972,7 +972,7 @@ corner(passGo, 10)
 grad(passGo, GRAD_MAIN, 90)
 
 local getKeyBtn = mk("TextButton", {
-    Size = UDim2.new(1, -50, 0, 36),
+    Size = UDim2.new(0.5, -30, 0, 36),
     Position = UDim2.new(0, 25, 0, 264),
     BackgroundColor3 = C.card,
     Font = Enum.Font.GothamBold,
@@ -983,6 +983,34 @@ local getKeyBtn = mk("TextButton", {
 }, passFrame)
 corner(getKeyBtn, 10)
 stroke(getKeyBtn, C.txt, 1, 0.55)
+
+local pasteBtn = mk("TextButton", {
+    Size = UDim2.new(0.5, -30, 0, 36),
+    Position = UDim2.new(0.5, 5, 0, 264),
+    BackgroundColor3 = C.card,
+    Font = Enum.Font.GothamBold,
+    TextSize = 13,
+    TextColor3 = C.txt,
+    Text = "PASTE",
+    AutoButtonColor = false,
+}, passFrame)
+corner(pasteBtn, 10)
+stroke(pasteBtn, C.line, 1, 0.4)
+
+pasteBtn.MouseButton1Click:Connect(function()
+    local ok, clip = pcall(function()
+        if typeof(getclipboard) == "function" then
+            return getclipboard()
+        end
+        return nil
+    end)
+    if ok and type(clip) == "string" and #trim(clip) > 3 then
+        passBox.Text = trim(clip)
+        passHint.Text = "Pasted — press UNLOCK"
+    else
+        passHint.Text = "Clipboard empty — copy the key first"
+    end
+end)
 
 local passInfo = mk("TextLabel", {
     Size = UDim2.new(1, -50, 0, 20),
@@ -1015,6 +1043,7 @@ local function hoverFx(btn, hoverBg)
     end)
 end
 hoverFx(getKeyBtn, C.cardHi)
+hoverFx(pasteBtn, C.cardHi)
 
 getKeyBtn.MouseButton1Click:Connect(function()
     local url = activeGetKeyUrl()
