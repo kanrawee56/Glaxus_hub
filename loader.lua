@@ -46,21 +46,12 @@ local AUTO_LOAD = true -- ถ้า PlaceId ตรงกับเกมในล
 local LOADING_TIME = 2.8 -- วินาทีของหน้า loading
 
 -- =====================================================================
--- [2.1] 🔒 PASSWORD / KEY SYSTEM (ตั้งรหัสตรงนี้)
+-- [2.1] OWNER KEY (กุญแจฉุกเฉินเจ้าของใบเดียว — ที่เหลือ Panda จัดการหมด)
 -- =====================================================================
-local PASSWORD = "GLAXUS-CHANGE-ME" -- <<<<<< รหัสเจ้าของ เปลี่ยนใหม่ทุกครั้งก่อนแจก (ของเก่าหลุดใน history แล้ว)
-local MAX_ATTEMPTS = 5 -- ใส่ผิดเกินนี้ -> ปิดสคริปต์ทิ้ง
-local KICK_ON_FAIL = false -- true = ใส่ผิดครบแล้วเตะออกจากเกมเลย, false = แค่ปิด UI
+local OWNER_KEY = "GLAXUS-CHANGE-ME" -- <<<<<< เปลี่ยนก่อนแจกทุกครั้ง
+local MAX_ATTEMPTS = 5
+local KICK_ON_FAIL = false
 local KICK_MSG = "Invalid key."
-
--- ลิสต์รหัสออนไลน์ (optional): ไฟล์ .txt มีรหัสทีละบรรทัด เช่น pastebin raw / github gist raw
-local KEY_LIST_URL = ""
-
--- ล็อก HWID (optional): true = รับเฉพาะเครื่องที่ gethwid ตรงกับ ALLOWED_HWIDS
-local USE_HWID_LOCK = false
-local ALLOWED_HWIDS = {
-    -- "ใส่ hwid ตรงนี้",
-}
 
 local function trim(s)
     return (tostring(s or ""):gsub("^%s+", ""):gsub("%s+$", ""))
@@ -74,54 +65,6 @@ local function getHwid()
         end
     end
     return nil
-end
-
-local function checkHwid()
-    if not USE_HWID_LOCK then
-        return true
-    end
-    local id = getHwid()
-    if not id then
-        return false
-    end
-    for _, allow in ipairs(ALLOWED_HWIDS) do
-        if trim(allow) == trim(id) then
-            return true
-        end
-    end
-    return false
-end
-
-local remoteKeys = nil -- cache ลิสต์รหัสออนไลน์
-local function fetchRemoteKeys()
-    if remoteKeys then
-        return remoteKeys
-    end
-    remoteKeys = {}
-    if type(KEY_LIST_URL) == "string" and #KEY_LIST_URL > 8 then
-        local ok, body = pcall(function() return game:HttpGet(KEY_LIST_URL) end)
-        if ok and type(body) == "string" then
-            for line in (body .. "\n"):gmatch("([^\r\n]+)") do
-                line = trim(line)
-                if #line > 0 then
-                    remoteKeys[line] = true
-                end
-            end
-        end
-    end
-    return remoteKeys
-end
-
-local function checkKey(input)
-    input = trim(input)
-    if input == PASSWORD then
-        return true
-    end
-    local keys = fetchRemoteKeys()
-    if keys[input] then
-        return true
-    end
-    return false
 end
 
 -- =====================================================================
@@ -211,7 +154,7 @@ local function loadSavedKey()
 end
 
 local function checkPandaKey(input)
-    if input == PASSWORD then
+    if input == OWNER_KEY then
         return true, "owner"
     end
     local st = pandaValidate(input)
@@ -244,113 +187,16 @@ local function pandaGetKeyLink()
     return base
 end
 
--- =====================================================================
--- [2.3] 💰 LUARMOR (สำรอง — เปิดหลังสมัคร + อัปโหลดสคริปต์ครบแล้ว)
--- =====================================================================
-local LUARMOR_ENABLED = false
-local LUARMOR_GETKEY_URL = ""
-local LUARMOR_IDS = {
-    HUB = "",
-    WarfareTycoon_31490825 = "",
-    ABA_1458767429 = "",
-    MICUP_6884319169 = "",
-    ColdWar_13687899540 = "",
-    JujutsuShenanigans_9391468976 = "",
-    KingLegacy_1451439645 = "",
-    BloxStrike_114234929420007 = "",
-    Ride_A_Pet_124216119978534 = "",
-    Slayer_2_136406881576517 = "",
-    Steal_An_Egg_107778070777162 = "",
-}
-
-local luarmorApi = nil
-local function getLuarmorApi(hubScriptId)
-    if luarmorApi then
-        luarmorApi.script_id = hubScriptId
-        return luarmorApi
-    end
-    local ok, lib = pcall(function()
-        return loadstring(game:HttpGet("https://sdkapi-public.luarmor.net/library.lua"))()
-    end)
-    if not ok or type(lib) ~= "table" then
-        return nil
-    end
-    luarmorApi = lib
-    luarmorApi.script_id = hubScriptId
-    return luarmorApi
-end
-
-local function getLuarmorCheckId()
-    if LUARMOR_IDS.HUB ~= "" then
-        return LUARMOR_IDS.HUB
-    end
-    for _, id in pairs(LUARMOR_IDS) do
-        if type(id) == "string" and #id > 5 then
-            return id
-        end
-    end
-    return ""
-end
-
-local LUARMOR_MSG = {
-    KEY_VALID = "Access granted.",
-    KEY_HWID_LOCKED = "Key locked to another device — reset HWID",
-    KEY_EXPIRED = "Key expired — get a new one",
-    KEY_BANNED = "Key banned",
-    KEY_INCORRECT = "Incorrect key",
-    KEY_INVALID = "Invalid key format",
-}
-
-local function setScriptKey(key)
-    pcall(function() getgenv().script_key = key end)
-    script_key = key -- global ตาม docs Luarmor (ต้องมีก่อน load_script)
-end
-
-local function checkLuarmorKey(input)
-    if input == PASSWORD then
+-- ตรวจคีย์ระบบเดียว: Panda (+กุญแจเจ้าของ)
+local function verifyKey(input)
+    if input == OWNER_KEY then
         return true, "owner"
     end
-    local sid = getLuarmorCheckId()
-    if sid == "" then
-        return false, "script_id not set [2.3]"
-    end
-    local api = getLuarmorApi(sid)
-    if not api then
-        return false, "Luarmor library failed (network/executor)"
-    end
-    local ok, status = pcall(function() return api.check_key(input) end)
-    if not ok or type(status) ~= "table" then
-        return false, "Luarmor unreachable — retry"
-    end
-    if status.code == "KEY_VALID" then
-        setScriptKey(input)
-        return true, "luarmor"
-    end
-    return false, (LUARMOR_MSG[status.code] or ("Key check failed: " .. tostring(status.code)))
-end
-
--- เลือก backend ตรวจคีย์อัตโนมัติ: Panda > Luarmor > local
-local function verifyKey(input)
-    if PANDA_ENABLED then
-        return checkPandaKey(input)
-    elseif LUARMOR_ENABLED then
-        return checkLuarmorKey(input)
-    else
-        if checkKey(input) then
-            return true, "local"
-        end
-        return false, "Invalid key"
-    end
+    return checkPandaKey(input)
 end
 
 local function activeGetKeyUrl()
-    if PANDA_ENABLED then
-        return pandaGetKeyLink()
-    end
-    if LUARMOR_ENABLED and LUARMOR_GETKEY_URL ~= "" then
-        return LUARMOR_GETKEY_URL
-    end
-    return ""
+    return pandaGetKeyLink()
 end
 
 -- ลิสต์เกมทั้งหมด (ต้องตรงกับโฟลเดอร์ Games/<Folder>/Scripts/<File>)
@@ -888,7 +734,7 @@ local function hubSay(t, isErr)
 end
 
 -- =====================================================================
--- [6] 🔒 PASSWORD UI
+-- [6] KEY UI
 -- =====================================================================
 local passOuter, passFrame, passGrad = panelCard(rootGui, UDim2.new(0, 370, 0, 400), UDim2.new(0.5, 0, 0.5, 0), 18)
 passOuter.Name = "Password"
@@ -1076,35 +922,29 @@ local function tryUnlock()
         return
     end
     local input = trim(passBox.Text)
-    if not checkHwid() then
-        attemptsLeft = attemptsLeft - 1
-        passInfo.Text = "Device not authorized (HWID)"
-        shake(passOuter)
+    passInfo.TextColor3 = C.dim
+    passInfo.Text = "Verifying key..."
+    local ok, info = verifyKey(input)
+    if ok then
+        unlocked = true
+        passInfo.TextColor3 = C.mint
+        passInfo.Text = "Access granted."
+        TweenService:Create(passOuter, TweenInfo.new(0.25), {
+            Position = passOuter.Position + UDim2.new(0, 0, 0, -12),
+        }):Play()
+        task.wait(0.45)
+        passOuter.Visible = false
+        onUnlocked()
+        return
     else
-        passInfo.TextColor3 = C.dim
-        passInfo.Text = "Verifying key..."
-        local ok, info = verifyKey(input)
-        if ok then
-            unlocked = true
-            passInfo.TextColor3 = C.mint
-            passInfo.Text = "Access granted."
-            TweenService:Create(passOuter, TweenInfo.new(0.25), {
-                Position = passOuter.Position + UDim2.new(0, 0, 0, -12),
-            }):Play()
-            task.wait(0.45)
-            passOuter.Visible = false
-            onUnlocked()
-            return
-        else
-            attemptsLeft = attemptsLeft - 1
-            passInfo.TextColor3 = C.red
-            local msg = tostring(info)
-            if msg == "Invalid key" then
-                msg = msg .. " (" .. tostring(math.max(attemptsLeft, 0)) .. " left)"
-            end
-            passInfo.Text = msg
-            shake(passOuter)
+        attemptsLeft = attemptsLeft - 1
+        passInfo.TextColor3 = C.red
+        local msg = tostring(info)
+        if msg == "Invalid key" then
+            msg = msg .. " (" .. tostring(math.max(attemptsLeft, 0)) .. " left)"
         end
+        passInfo.Text = msg
+        shake(passOuter)
     end
     passBox.Text = ""
     if attemptsLeft <= 0 then
@@ -1172,23 +1012,6 @@ local function loadGame(entry)
     hubSay("Loading " .. entry.name .. "...")
 
     task.spawn(function()
-        -- 0) Luarmor ก่อน (ถ้าเปิด + มี script_id ของเกมนี้)
-        if LUARMOR_ENABLED and LUARMOR_IDS[entry.folder] ~= nil and LUARMOR_IDS[entry.folder] ~= "" then
-            local api = getLuarmorApi(LUARMOR_IDS[entry.folder])
-            if api then
-                hubSay("Loading " .. entry.name .. " (Luarmor)...")
-                local ok, err = pcall(function() api.load_script() end)
-                if ok then
-                    closeHub()
-                    return
-                end
-                hubSay("Luarmor failed — trying GitHub", true)
-                task.wait(0.5)
-            else
-                hubSay("Luarmor unreachable — trying GitHub", true)
-                task.wait(0.5)
-            end
-        end
         local src, from = fetchSource(entry)
         if not src then
             hubSay("File not found: " .. entry.folder, true)
