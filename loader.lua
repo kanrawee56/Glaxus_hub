@@ -76,22 +76,33 @@ local PANDA_ENABLED = true -- <<<<<< true = จอรหัสตรวจคี
 local PANDA_SERVICE_ID = "glaxushub" -- identifier จากแท็บ Hub Details (ของเราคือ glaxushub)
 local PANDA_GETKEY_URL = "https://ads.pandauth.com/getkey/glaxushub" -- หน้าคีย์ตาม docs Panda (เติม ?hwid= ให้อัตโนมัติในโค้ด)
 
-local PANDA_LIB_URL = "https://api.pandauth.com/lib/external/v3.lua"
+local PUSL_LIB_URL = "https://secure.pandauth.com/pv4/lib" -- Panda-RBLX SDK (PUSL-V4, ตัวปัจจุบัน)
 local PANDA_KEY_FILE = "glaxus_key.txt" -- จำคีย์ที่ผ่านแล้ว (รันรอบหน้าไม่ต้องกรอกใหม่)
 
-local pelinda = nil
-local function getPelinda()
-    if pelinda then
-        return pelinda
+local PUSL_LIB_URL = "https://secure.pandauth.com/pv4/lib" -- Panda-RBLX SDK (PUSL-V4, ตัวปัจจุบัน)
+
+local pusl = nil
+local puslService = nil
+local function getPUSL()
+    if pusl and puslService == pandaService() then
+        return pusl
     end
-    local ok, lib = pcall(function()
-        return loadstring(game:HttpGet(PANDA_LIB_URL))()
+    local ok, src = pcall(function() return game:HttpGet(PUSL_LIB_URL) end)
+    if not ok or type(src) ~= "string" or #src < 100 then
+        return nil
+    end
+    local ok2, lib = pcall(function() return loadstring(src)() end)
+    if not ok2 or type(lib) ~= "table" or type(lib.configure) ~= "function" then
+        return nil
+    end
+    local ok3 = pcall(function()
+        lib.configure({ serviceId = pandaService(), debug = false, kickOnDetect = false })
     end)
-    if ok and type(lib) == "table" then
-        pelinda = lib
-        return pelinda
+    if not ok3 then
+        return nil
     end
-    return nil
+    pusl, puslService = lib, pandaService()
+    return pusl
 end
 
 local function pandaService()
@@ -101,32 +112,34 @@ local function pandaService()
     return "glaxushub"
 end
 
--- ตรวจคีย์กับ Panda: "valid" / "invalid" / "error" (retry 3 รอบกันเน็ตกระตุก)
+-- ตรวจคีย์กับ Panda: "valid" / "invalid" / "transient:<reason>" / "error"
+-- (มีแค่ INVALID_KEY = คีย์ผิดจริง ที่เหลือคือเน็ต/เรทลิมิต -> retry ไม่นับครั้ง)
 local function pandaValidate(input)
-    local api = getPelinda()
+    local api = getPUSL()
     if not api then
         return "error"
     end
-    local res = nil
-    for _ = 1, 3 do
-        local ok, r = pcall(function()
-            return api.Init({ Service = pandaService(), Key = input, SilentMode = true })
-        end)
-        if ok and type(r) == "string" then
-            res = r
-            if r ~= "error!!" then
-                break
+    local final = "error"
+    for attempt = 1, 4 do
+        local ok, res = pcall(function() return api.validate(input) end)
+        if ok and type(res) == "table" then
+            if res.success then
+                return "valid"
             end
+            local reason = tostring(res.reason or res.error or "unknown")
+            if reason == "INVALID_KEY" then
+                return "invalid"
+            end
+            final = reason
         end
-        task.wait(1)
+        if attempt < 4 then
+            task.wait(attempt * 2)
+        end
     end
-    if res == "validated!!" then
-        return "valid"
+    if final == "error" then
+        return "error"
     end
-    if res == "invalid!!" then
-        return "invalid"
-    end
-    return "error"
+    return "transient:" .. final
 end
 
 local function saveKey(input)
@@ -163,12 +176,21 @@ local function checkPandaKey(input)
         return true, "panda"
     elseif st == "invalid" then
         return false, "Invalid, expired, or HWID-locked key"
+    elseif st:sub(1, 10) == "transient:" then
+        return false, "TRANSIENT:" .. st:sub(11)
     end
-    return false, "Cannot reach Panda — retry"
+    return false, "TRANSIENT:network"
 end
 
--- ลิงก์เอาคีย์ (ไม่พึ่ง library — สร้างจาก format ตรงตาม docs + แถม HWID)
+-- ลิงก์เอาคีย์ (ถาม SDK ก่อน ไม่ได้ค่อยใช้ลิงก์ตรง + แถม HWID)
 local function pandaGetKeyLink()
+    local api = getPUSL()
+    if api and type(api.getKeyUrl) == "function" then
+        local ok, link = pcall(function() return api.getKeyUrl() end)
+        if ok and type(link) == "string" and #link > 8 then
+            return link
+        end
+    end
     local base = PANDA_GETKEY_URL
     if base == "" then
         base = "https://ads.pandauth.com/getkey/glaxushub"
@@ -176,13 +198,6 @@ local function pandaGetKeyLink()
     local id = getHwid()
     if id and #id > 0 then
         return base .. "?hwid=" .. id
-    end
-    local api = getPelinda()
-    if api then
-        local ok, link = pcall(function() return api.GetKeyLink({ Service = pandaService() }) end)
-        if ok and type(link) == "string" and #link > 8 then
-            return link
-        end
     end
     return base
 end
@@ -937,10 +952,13 @@ local function tryUnlock()
         onUnlocked()
         return
     else
-        attemptsLeft = attemptsLeft - 1
         passInfo.TextColor3 = C.red
         local msg = tostring(info)
-        if msg == "Invalid key" then
+        if msg:sub(1, 10) == "TRANSIENT:" then
+            -- เน็ต/เรทลิมิต: ไม่นับครั้ง ให้ลองใหม่ได้
+            msg = "Busy (" .. msg:sub(11) .. ") — retry"
+        else
+            attemptsLeft = attemptsLeft - 1
             msg = msg .. " (" .. tostring(math.max(attemptsLeft, 0)) .. " left)"
         end
         passInfo.Text = msg
