@@ -666,7 +666,7 @@ mk("TextLabel", {
     TextSize = 11,
     TextXAlignment = Enum.TextXAlignment.Left,
     TextColor3 = C.faint,
-    Text = "v3.0 MONO  •  PlaceId " .. tostring(CURRENT_PLACE),
+    Text = "v3.1 PANDA  •  PlaceId " .. tostring(CURRENT_PLACE),
 }, loadCard)
 
 local TIPS = {
